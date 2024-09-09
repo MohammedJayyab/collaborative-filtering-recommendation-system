@@ -5,10 +5,11 @@
 1. [Project Overview](#overview)
 2. [Installation](#installation)
 3. [Data Preparation](#data-preparation)
-4. [Modeling and Predictions](#modeling)
-5. [Evaluation Metrics](#evaluation)
-6. [Results](#results)
-7. [Future Improvements](#improvements)
+4. [Steps to Run](#steps-to-run)
+5. [Modeling and Predictions](#modeling)
+6. [Evaluation Metrics](#evaluation)
+7. [Results](#results)
+8. [Future Improvements](#improvements)
 
 ## 1. Project Overview <a name="overview"></a>
 
@@ -59,7 +60,49 @@ M = np.array([
 
 The interaction matrix will be used to train the recommendation model.
 
-## 4. Modeling and Predictions <a name="modeling"></a>
+## 4. Steps to Run <a name="steps-to-run"></a>
+
+To execute the recommendation system, follow these steps:
+
+### Step 1: Prepare the Data
+
+Run the `data_processing.py` script to clean and prepare the dataset:
+
+```bash
+python data_processing.py
+```
+
+This script will load the raw dataset, filter out irrelevant transactions, and create the interaction matrix (`data/interaction_matrix.pkl`).
+
+### Step 2: Build the Collaborative Filtering Model
+
+Run the `collaborative_filtering_model.py` to build the recommendation model using SVD:
+
+```bash
+python collaborative_filtering_model.py
+```
+
+This script will train the SVD model and save the trained model (`models/svd_model.pkl`) and latent matrix (`models/latent_matrix.pkl`).
+
+### Step 3: Make Predictions
+
+Run the `make_predictions.py` to generate product recommendations for specific users:
+
+```bash
+python make_predictions.py
+```
+
+This will recommend products for users based on the learned latent factors.
+
+### Step 4: Evaluate the Model
+
+Run the `evaluate_model.py` to evaluate the performance of the recommendation system using metrics like MSE, Precision@K, Recall@K, and F1-Score:
+
+```bash
+python evaluate_model.py
+```
+
+## 5. Modeling and Predictions <a name="modeling"></a>
 
 We use **Singular Value Decomposition (SVD)** to decompose the interaction matrix into three matrices: \( U \), \( \Sigma \), and \( V^T \). This allows us to capture the latent relationships between customers and products.
 
@@ -73,7 +116,7 @@ We then reconstruct the interaction matrix to predict how much a customer will l
 
 For a customer \( C_1 \) and product \( P_3 \), the predicted interaction score is calculated by taking the dot product between the customer’s latent features and the product’s latent features.
 
-## 5. Evaluation Metrics <a name="evaluation"></a>
+## 6. Evaluation Metrics <a name="evaluation"></a>
 
 We evaluate the recommendation system using various metrics:
 
@@ -93,7 +136,7 @@ We evaluate the recommendation system using various metrics:
 - **Recall@5**: 5.68%
 - **F1-Score@5**: 8.46%
 
-## 6. Results <a name="results"></a>
+## 7. Results <a name="results"></a>
 
 The recommendation system suggests personalized products for each customer. For example:
 
@@ -103,7 +146,7 @@ The recommendation system suggests personalized products for each customer. For 
 
 These recommendations are based on past purchase patterns and the latent relationships identified through the SVD model.
 
-## 7. Future Improvements <a name="improvements"></a>
+## 8. Future Improvements <a name="improvements"></a>
 
 Several improvements can be made to enhance the performance of the recommendation system:
 
