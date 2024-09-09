@@ -1,4 +1,6 @@
-# Collaborative Filtering Recommendation System Using SVD
+# Collaborative Filtering Recommendation System Using SVD (Singular Value Decomposition (SVD)
+
+SVD is a powerful mathematical technique used in linear algebra to decompose a matrix into three other matrices. It is widely used in various fields, including machine learning, signal processing, and data compression. In the context of a collaborative filtering recommendation system, SVD can be used to factorize the user-item interaction matrix, which helps in identifying latent factors that explain the observed user-item interactions.)
 
 ## Table of Contents
 
